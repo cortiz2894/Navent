@@ -1,0 +1,15 @@
+.heart-liked.true * {
+    color: #dc2d2b;
+}
+.modal-content {
+    position: fixed;
+    z-index: 10;
+    background: white;
+    left: 50%;
+    top: 50%;
+    min-width: 500px;
+    min-height: 200px;
+    transform: translate(-50%, -50%);
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.22);
+    border-radius: 2px;
+}
