@@ -77,13 +77,23 @@ class ItemApartment extends React.Component {
         });
     }
 
+    closeModal = (dataSendFromChild) => {
+        if(dataSendFromChild){
+            this.setState({
+                openModal: false,
+            });
+        }
+        
+    }
+
     render() {
+      const {like, inputPrice , openModal , hideLabel} = this.state;
       return (
         <Card >
         <CardContent className="item-list">
           <div className="container-img-carousel">
             <div
-            className={`heart-liked  ${this.state.like}`} 
+            className={`heart-liked  ${like}`} 
             onClick={this.addLike}
 
             >
@@ -103,15 +113,15 @@ texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde
 año 1500, cuando un impresor (N. del T. persona que se dedica a la imprenta)
             </Typography>
             <div className="price-info">
-                {!this.state.hideLabel ?(
+                {!hideLabel ?(
                     <Typography className="price" 
                     onClick={this.showInput}>
-                        U$S {this.state.inputPrice}
+                        U$S {inputPrice}
                     </Typography>
                 ):(
                     <Input 
                     placeholder="Ingrese un precio" 
-                    value={this.state.inputPrice} 
+                    value={inputPrice} 
                     onChange={this.changePrice}
                     onKeyDown={this.handleKeyDown}
                     type="number"
@@ -134,8 +144,12 @@ año 1500, cuando un impresor (N. del T. persona que se dedica a la imprenta)
             </CardActions>
           </div>
         </CardContent>
-        {this.state.openModal ?(
-            <Modal></Modal>
+        {openModal ?(
+            <div className="modal-blur">
+                <Modal
+                    showModal={this.closeModal}
+                ></Modal>
+            </div>
         ):null}
       </Card>
       );
